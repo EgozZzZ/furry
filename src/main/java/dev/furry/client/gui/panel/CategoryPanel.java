@@ -32,8 +32,8 @@ public class CategoryPanel {
         this.y = y;
         this.modules = FurryClient.INSTANCE.modules.byCategory(cat);
         for (Module m : modules) {
-            rowAnims.put(m, new Animator(0f, 8f));
-            expandAnims.put(m, new Animator(0f, 10f));
+            rowAnims.put(m, new Animator(0f, 12f));
+            expandAnims.put(m, new Animator(0f, 14f));
         }
     }
 
@@ -52,7 +52,7 @@ public class CategoryPanel {
         }
 
         int py = y + slide;
-        Render2D.shadow(ctx, x, py, w, bodyH, 6, 6, 0x80000000);
+        
         Render2D.roundedRect(ctx, x, py, w, bodyH, 6, t.backgroundAlt);
         Render2D.outline(ctx, x, py, w, bodyH, 1, t.border);
 

@@ -20,7 +20,7 @@ public final class Animator {
         float dt = Math.min(100, now - lastMs) / 1000f;
         lastMs = now;
         float diff = target - value;
-        value += diff * Math.min(1f, speed * dt * 20f);
+        value += diff * Math.min(1f, Math.max(0f, speed * dt));
         if (Math.abs(diff) < 0.001f) value = target;
         return value;
     }

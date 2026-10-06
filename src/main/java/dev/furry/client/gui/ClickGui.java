@@ -34,24 +34,26 @@ public class ClickGui extends Screen {
     @Override
     protected void init() {
         openedAt = System.currentTimeMillis();
+        openAnim = 0f;
         super.init();
     }
 
     @Override
     public void render(DrawContext ctx, int mouseX, int mouseY, float delta) {
         long elapsed = System.currentTimeMillis() - openedAt;
-        openAnim = Math.min(1f, elapsed / 220f);
+        if (openAnim < 1f) openAnim = Math.min(1f, elapsed / 220f);
 
         Theme t = THEMES.active();
-        ctx.fill(0, 0, width, height, (int) (0xB0000000 * openAnim));
+        int dimAlpha = (int) (0xB0 * openAnim);
+        ctx.fill(0, 0, width, height, (dimAlpha << 24));
 
         int slide = (int) ((1f - openAnim) * 20);
         for (CategoryPanel p : panels) {
             p.render(ctx, mouseX, mouseY, delta, t, slide);
         }
 
-        ctx.drawTextWithShadow(textRenderer, "FurryClient", 12, 12, t.text);
-        ctx.drawTextWithShadow(textRenderer, "Theme: " + t.name + "  ·  T to cycle  ·  RShift to close", 12, 24, t.textDim);
+        ctx.drawTextWithShadow(net.minecraft.client.MinecraftClient.getInstance().textRenderer, "FurryClient", 12, 12, t.text);
+        ctx.drawTextWithShadow(net.minecraft.client.MinecraftClient.getInstance().textRenderer, "Theme: " + t.name + "  ·  T to cycle  ·  RShift to close", 12, 24, t.textDim);
 
         super.render(ctx, mouseX, mouseY, delta);
     }
