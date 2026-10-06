@@ -44,8 +44,8 @@ public class ClickGui extends Screen {
         if (openAnim < 1f) openAnim = Math.min(1f, elapsed / 220f);
 
         Theme t = THEMES.active();
-        int dimAlpha = (int) (0xB0 * openAnim);
-        ctx.fill(0, 0, width, height, (dimAlpha << 24));
+        
+        // dim disabled pending color-blend investigation
 
         int slide = (int) ((1f - openAnim) * 20);
         for (CategoryPanel p : panels) {

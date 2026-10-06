@@ -1,13 +1,23 @@
 package dev.furry.client.core;
 
 import dev.furry.client.module.Module;
+import dev.furry.client.module.combat.AutoTotem;
+import dev.furry.client.module.combat.Criticals;
+import dev.furry.client.module.combat.KillAura;
+import dev.furry.client.module.combat.Velocity;
+
 import java.util.*;
 
 public final class ModuleManager {
     private final List<Module> modules = new ArrayList<>();
     private final Map<Class<?>, Module> byClass = new HashMap<>();
 
-    public void registerAll() {}
+    public void registerAll() {
+        register(new KillAura());
+        register(new Velocity());
+        register(new Criticals());
+        register(new AutoTotem());
+    }
 
     public void register(Module m) { modules.add(m); byClass.put(m.getClass(), m); }
 

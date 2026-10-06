@@ -39,10 +39,10 @@ public class FurryClient implements ClientModInitializer {
         this.modules  = new ModuleManager();
         this.config   = new ConfigManager();
         this.keybinds = new KeybindManager();
-        this.clickGui = new ClickGui();
-        this.hud = new HudManager();
+        this.hud      = new HudManager();
 
-        this.modules.registerAll();
+        this.modules.registerAll();   // <-- modules exist first
+        this.clickGui = new ClickGui();  // <-- then panels are built from them
         this.config.load();
         this.keybinds.register();
 
