@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "furryclient",
+  "version": "${version}",
+  "name": "FurryClient",
+  "description": "Anarchy & PvP client for Minecraft 1.21.11",
+  "authors": ["AN0nYMouS-ViP"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["dev.furry.client.FurryClient"]
+  },
+  "mixins": ["furryclient.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
