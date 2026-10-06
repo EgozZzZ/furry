@@ -5,6 +5,7 @@ import dev.furry.client.core.ModuleManager;
 import dev.furry.client.core.ConfigManager;
 import dev.furry.client.core.KeybindManager;
 import dev.furry.client.gui.ClickGui;
+import dev.furry.client.gui.hud.HudManager;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.MinecraftClient;
@@ -25,6 +26,7 @@ public class FurryClient implements ClientModInitializer {
     public ConfigManager config;
     public KeybindManager keybinds;
     public ClickGui clickGui;
+    public HudManager hud;
 
     @Override
     public void onInitializeClient() {
@@ -38,6 +40,7 @@ public class FurryClient implements ClientModInitializer {
         this.config   = new ConfigManager();
         this.keybinds = new KeybindManager();
         this.clickGui = new ClickGui();
+        this.hud = new HudManager();
 
         this.modules.registerAll();
         this.config.load();
